@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
       <Head>
@@ -8,10 +8,12 @@ export default function Home() {
       </Head>
 
       <body>
-        <h1 className="text-6xl font-bold">
-          This website is under construction {"<"}3
-        </h1>
+        <div className="h-auto w-screen flex justify-center items-center">
+          
+        </div>
       </body>
     </div>
   );
-}
+};
+
+export default Home;
