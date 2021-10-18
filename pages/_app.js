@@ -3,18 +3,28 @@ import Layout from '../components/layouts/main'
 import Fonts from '../components/fonts'
 import theme from '../lib/theme'
 import { AnimatePresence } from 'framer-motion'
+import styled from '@emotion/styled'
 
-function Website({ Component, pageProps, router }) {
+const CannotSelectText = styled.div`
+  user-select: none;
+  --ms-user-select: none;
+  --moz-user-select: none;
+  --webkit-user-select: none;
+`
+
+function MyApp({ Component, pageProps, router }) {
   return (
-    <ChakraProvider theme={theme}>
-      <Fonts />
-      <Layout router={router}>
-        <AnimatePresence exitBeforeEnter initial={true}>
-          <Component {...pageProps} key={router.route} />
-        </AnimatePresence>
-      </Layout>
-    </ChakraProvider>
+    <CannotSelectText>
+      <ChakraProvider theme={theme}>
+        <Fonts />
+        <Layout router={router}>
+          <AnimatePresence exitBeforeEnter initial={true}>
+            <Component {...pageProps} key={router.route} />
+          </AnimatePresence>
+        </Layout>
+      </ChakraProvider>
+    </CannotSelectText>
   )
 }
 
-export default Website
+export default MyApp

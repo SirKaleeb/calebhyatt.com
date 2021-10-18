@@ -1,226 +1,137 @@
-import NextLink from 'next/link'
 import {
-  Link,
-  Container,
-  Heading,
+  Stack,
+  Flex,
   Box,
-  Image,
-  SimpleGrid,
+  Heading,
+  Text,
   Button,
-  List,
-  ListItem,
+  Image,
   Icon,
   useColorModeValue
 } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
-import Paragraph from '../components/paragraph'
-import { BioSection, BioYear } from '../components/bio'
-import Layout from '../components/layouts/article'
-import Section from '../components/section'
-import { GridItem } from '../components/grid-item'
-import {
-  IoLogoTwitter,
-  IoLogoInstagram,
-  IoLogoGithub,
-  IoLogoDiscord
-} from 'react-icons/io5'
-import thumbYouTube from '../public/images/links/youtube.png'
-import thumbInkdrop from '../public/images/works/inkdrop_eyecatch.png'
+import PlayIcon from '../public/playButton'
 
-const Home = () => (
-  <Layout>
-    <Container>
-      <Box
-        borderRadius="lg"
-        mb={6}
-        p={3}
-        textAlign="center"
-        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+export default function CallToActionWithVideo() {
+  return (
+    <Stack
+      align={'center'}
+      spacing={{ base: 8, md: 10 }}
+      py={{ base: 16, md: 20 }}
+      direction={{ base: 'column', md: 'row' }}
+    >
+      <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+        <Heading
+          lineHeight={1.1}
+          fontWeight={600}
+          fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
+        >
+          <Text
+            as={'span'}
+            position={'relative'}
+            _after={{
+              content: "''",
+              width: 'full',
+              height: '30%',
+              position: 'absolute',
+              bottom: 1,
+              left: 0,
+              bg: 'red.400',
+              zIndex: -1
+            }}
+          >
+            Caleb Hyatt
+          </Text>
+          <br />
+          <Text as={'span'} color={'red.400'}>
+            Web Developer
+          </Text>
+        </Heading>
+        <Text color={'gray.500'}>
+          Hello! My name is Caleb Hyatt. I&#x27;m an 18-year-old web developer,
+          gamer, and a freshman in college studying Computer Science. I was born
+          in Minnesota, but now live in Pennsylvania. I specialize in website
+          development and have been making A.I. recently, specifically Discord
+          bots.
+        </Text>
+        <Stack
+          spacing={{ base: 4, sm: 6 }}
+          direction={{ base: 'column', sm: 'row' }}
+        >
+          <Button
+            rounded={'full'}
+            size={'lg'}
+            fontWeight={'normal'}
+            px={6}
+            colorScheme={'red'}
+            bg={'red.400'}
+            _hover={{ bg: 'red.500' }}
+          >
+            Get started
+          </Button>
+          <Button
+            rounded={'full'}
+            size={'lg'}
+            fontWeight={'normal'}
+            px={6}
+            leftIcon={<PlayIcon h={4} w={4} color={'gray.300'} />}
+          >
+            How It Works
+          </Button>
+        </Stack>
+      </Stack>
+      <Flex
+        flex={1}
+        justify={'center'}
+        align={'center'}
+        position={'relative'}
+        w={'full'}
       >
-        Hello, I&apos;m a full-stack developer based in Japan!
-      </Box>
-
-      <Box display={{ md: 'flex' }}>
-        <Box flexGrow={1}>
-          <Heading as="h2" variant="page-title">
-            Takuya Matsuyama
-          </Heading>
-          <p>Digital Craftsman ( Artist / Developer / Designer )</p>
-        </Box>
+        <Blob
+          w={'150%'}
+          h={'150%'}
+          position={'absolute'}
+          top={'-50%'}
+          left={'-10%'}
+          zIndex={-1}
+          color={useColorModeValue('red.50', 'red.400')}
+        />
         <Box
-          flexShrink={0}
-          mt={{ base: 4, md: 0 }}
-          ml={{ md: 6 }}
-          textAlign="center"
+          position={'relative'}
+          height={'full'}
+          rounded={'2xl'}
+          boxShadow={'2xl'}
+          width={'full'}
+          overflow={'hidden'}
         >
           <Image
-            borderColor="whiteAlpha.800"
-            borderWidth={2}
-            borderStyle="solid"
-            maxWidth="100px"
-            display="inline-block"
-            borderRadius="full"
-            src="/images/takuya.jpg"
-            alt="Profile image"
+            alt={'Hero Image'}
+            fit={'cover'}
+            align={'center'}
+            w={'100%'}
+            h={'100%'}
+            src={'me.jpg'}
           />
         </Box>
-      </Box>
+      </Flex>
+    </Stack>
+  )
+}
 
-      <Section delay={0.1}>
-        <Heading as="h3" variant="section-title">
-          Work
-        </Heading>
-        <Paragraph>
-          Takuya is a freelance and a full-stack developer based in Osaka with a
-          passion for building digital services/stuff he wants. He has a knack
-          for all things launching products, from planning and designing all the
-          way to solving real-life problems with code. When not online, he loves
-          hanging out with his camera. Currently, he is living off of his own
-          product called{' '}
-          <NextLink href="/works/inkdrop">
-            <Link>Inkdrop</Link>
-          </NextLink>
-          .
-        </Paragraph>
-        <Box align="center" my={4}>
-          <NextLink href="/works">
-            <Button rightIcon={<ChevronRightIcon />} colorScheme="teal">
-              My portfolio
-            </Button>
-          </NextLink>
-        </Box>
-      </Section>
-
-      <Section delay={0.2}>
-        <Heading as="h3" variant="section-title">
-          Bio
-        </Heading>
-        <BioSection>
-          <BioYear>1984</BioYear>
-          Born in Osaka (大阪), Japan.
-        </BioSection>
-        <BioSection>
-          <BioYear>2010</BioYear>
-          Completed the Master&apos;s Program in the Graduate School of
-          Information Science at Nara Institute of Science and Technology
-          (奈良先端科学技術大学院大学情報科学研究科修士課程)
-        </BioSection>
-        <BioSection>
-          <BioYear>2010</BioYear>
-          Worked at Yahoo! Japan (ヤフー株式会社入社)
-        </BioSection>
-        <BioSection>
-          <BioYear>2012 to present</BioYear>
-          Works as a freelance
-        </BioSection>
-      </Section>
-
-      <Section delay={0.3}>
-        <Heading as="h3" variant="section-title">
-          I ♥
-        </Heading>
-        <Paragraph>
-          Art, Music,{' '}
-          <Link href="https://illust.odoruinu.net/" target="_blank">
-            Drawing
-          </Link>
-          , Playing Drums,{' '}
-          <Link href="https://500px.com/p/craftzdog" target="_blank">
-            Photography
-          </Link>
-          , Leica, Machine Learning
-        </Paragraph>
-      </Section>
-
-      <Section delay={0.3}>
-        <Heading as="h3" variant="section-title">
-          On the web
-        </Heading>
-        <List>
-          <ListItem>
-            <Link href="https://github.com/craftzdog" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<Icon as={IoLogoGithub} />}
-              >
-                @craftzdog
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://twitter.com/inkdrop_app" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<Icon as={IoLogoTwitter} />}
-              >
-                @inkdrop_app
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://twitter.com/craftzdog" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<Icon as={IoLogoTwitter} />}
-              >
-                @craftzdog
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://instagram.com/craftzdog" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<Icon as={IoLogoInstagram} />}
-              >
-                @craftzdog
-              </Button>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="https://discord.gg/QfsG5Kj" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={<Icon as={IoLogoDiscord} />}
-              >
-                Discord
-              </Button>
-            </Link>
-          </ListItem>
-        </List>
-
-        <SimpleGrid columns={[1, 2, 2]} gap={6}>
-          <GridItem
-            href="https://www.youtube.com/devaslife"
-            title="Dev as Life"
-            thumbnail={thumbYouTube}
-          >
-            My YouTube channel
-          </GridItem>
-          <GridItem
-            href="https://www.inkdrop.app/"
-            title="Inkdrop"
-            thumbnail={thumbInkdrop}
-          >
-            A Markdown note-taking app
-          </GridItem>
-        </SimpleGrid>
-
-        <Box align="center" my={4}>
-          <NextLink href="/posts">
-            <Button rightIcon={<ChevronRightIcon />} colorScheme="teal">
-              Popular posts
-            </Button>
-          </NextLink>
-        </Box>
-      </Section>
-    </Container>
-  </Layout>
-)
-
-export default Home
+export const Blob = props => {
+  return (
+    <Icon
+      width={'100%'}
+      viewBox="0 0 578 440"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M239.184 439.443c-55.13-5.419-110.241-21.365-151.074-58.767C42.307 338.722-7.478 282.729.938 221.217c8.433-61.644 78.896-91.048 126.871-130.712 34.337-28.388 70.198-51.348 112.004-66.78C282.34 8.024 325.382-3.369 370.518.904c54.019 5.115 112.774 10.886 150.881 49.482 39.916 40.427 49.421 100.753 53.385 157.402 4.13 59.015 11.255 128.44-30.444 170.44-41.383 41.683-111.6 19.106-169.213 30.663-46.68 9.364-88.56 35.21-135.943 30.551z"
+        fill="currentColor"
+      />
+    </Icon>
+  )
+}
